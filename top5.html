@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+   <meta name="viewport" content="width=1024, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Top 5 • Ba Yi’s PC Games</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --bg:#0f0b2b;
+      --card:#111028;
+      --accent:#ff66b2; /* pink */
+      --muted:#9aa0c0;
+    }
+    body{ background: linear-gradient(180deg,var(--bg) 0%, #0b0820 100%); font-family: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .gpu { image-rendering: auto; backface-visibility: hidden; transform: translateZ(0); }
+    body.modal-open { overflow: hidden; }
+
+    /* small polished details */
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 6px 18px rgba(3,2,18,0.6);
+      backdrop-filter: blur(6px);
+    }
+
+    /* price pill */
+    .price-pill {
+      background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: .35rem .6rem;
+      border-radius: 999px;
+      font-weight:700;
+      color: var(--accent);
+      display:inline-flex;
+      align-items:center;
+      gap:.4rem;
+    }
+
+    /* hover uplift for cards */
+    .lift:hover{ transform: translateY(-6px) scale(1.01); transition: transform .22s cubic-bezier(.2,.9,.2,1); }
+
+    /* small responsive tweak to prevent mobile modal overflow */
+    @media (max-width:520px){
+      .modal-panel { width: 96%; height: 86vh; margin-top: 6vh; }
+    }
+  </style>
+</head>
+<body class="text-white">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full z-50 py-4 px-6 glass flex items-center justify-between">
+
+
+  <div class="flex items-center gap-3">
+      <img src="Ba_Yi’s Pc Games.png" alt="Ba Yi's logo" class="h-10 w-10 rounded-full object-cover border-2 border-pink-400">
+      <div>
+        <div class="font-extrabold text-lg">Ba Yi’s PC Games</div>
+        <div class="text-xs text-gray-300">Me & Me Only</div>
+      </div>
+    </div>
+<div class="flex-1 flex justify-center">
+  <nav class="flex items-center space-x-8 text-sm bg-[#1e1e2f]/80 backdrop-blur-md border border-[#2f2f45] rounded-full px-6 py-4 mr-10 shadow-lg text-gray-200">
+    
+   
+
+    <a href="genre.html" class="relative group px-3 py-1 font-medium transition-all duration-300">
+      Genre
+      <span class="absolute left-1 bottom-1 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-[calc(100%-0.5rem)]"></span>
+    </a>
+
+    <a href="Recommended.html" class="relative group px-3 py-1 font-medium transition-all duration-300">
+      Recommended
+      <span class="absolute left-1 bottom-1 w-0 h-0.5 bg-emerald-400 transition-all duration-300 group-hover:w-[calc(100%-0.5rem)]"></span>
+    </a>
+
+    <a href="index.html" class="relative group px-3 py-1 font-medium transition-all duration-300">
+      Home
+      <span class="absolute left-1 bottom-1 w-0 h-0.5 bg-purple-400 transition-all duration-300 group-hover:w-[calc(100%-0.5rem)]"></span>
+    </a>
+
+  </nav>
+</div>
+  </header>
+
+  <div class="h-[72px]"></div>
+
+  <!-- HERO -->
+  <section class="max-w-6xl mx-auto px-6 md:px-10 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+      <div class="md:col-span-2">
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">Discover the <span style="color:var(--accent)">Top PC Games</span><br class="hidden md:block"/> — specs, price & buy</h1>
+        <p class="text-white/70 mt-3 max-w-xl">Click a card to open the modal with gameplay, minimum & recommended specs, and WhatsApp buy links. Prices are stable for your session.</p>
+        
+      </div>
+
+      <div class="glass rounded-xl p-4 flex flex-col gap-3">
+        <div class="text-xs text-white/60">Session Prices</div>
+        <div id="priceSummary" class="grid grid-cols-2 gap-2 text-sm"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS GRID -->
+  <main class="max-w-6xl mx-auto px-6 md:px-10 pb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card template repeated manually for your five -->
+      <article class="relative rounded-2xl overflow-hidden lift glass cursor-pointer" data-game="gta5" tabindex="0" aria-label="GTA V">
+        <div class="relative h-56 md:h-64 bg-cover bg-center gpu" style="background-image:url('c_1.0.jpg')"></div>
+        <div class="p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="font-bold text-lg">GTA V</h3>
+              <div class="text-xs text-white/60">Open World</div>
+            </div>
+            <div class="self-start">
+              <div class="price-pill game-price" data-game="gta5">₦—</div>
+            </div>
+          </div>
+          <p class="text-sm text-white/60 mt-3 line-clamp-2">Switch between three protagonists and take over Los Santos — single-player and GTA Online content.</p>
+        </div>
+      </article>
+
+      <article class="relative rounded-2xl overflow-hidden lift glass cursor-pointer" data-game="fifa23" tabindex="0" aria-label="FIFA 23">
+        <div class="relative h-56 md:h-64 bg-cover bg-center gpu" style="background-image:url('c_2.0.png')"></div>
+        <div class="p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="font-bold text-lg">EA SPORTS™ FIFA 23</h3>
+              <div class="text-xs text-white/60">Sports Simulation</div>
+            </div>
+            <div class="self-start">
+              <div class="price-pill game-price" data-game="fifa23">₦—</div>
+            </div>
+          </div>
+          <p class="text-sm text-white/60 mt-3 line-clamp-2">HyperMotion2, improved atmospheres and more realism on PC.</p>
+        </div>
+      </article>
+
+      <article class="relative rounded-2xl overflow-hidden lift glass cursor-pointer" data-game="arkham" tabindex="0" aria-label="Arkham Knight">
+        <div class="relative h-56 md:h-64 bg-cover bg-center gpu" style="background-image:url('c_3.0.jpg')"></div>
+        <div class="p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="font-bold text-lg">Batman: Arkham Knight</h3>
+              <div class="text-xs text-white/60">Action / Adventure</div>
+            </div>
+            <div class="self-start">
+              <div class="price-pill game-price" data-game="arkham">₦—</div>
+            </div>
+          </div>
+          <p class="text-sm text-white/60 mt-3 line-clamp-2">Rocksteady’s finale: Batmobile, gadgets and Gotham open-world.</p>
+        </div>
+      </article>
+
+      <article class="relative rounded-2xl overflow-hidden lift glass cursor-pointer" data-game="spidey" tabindex="0" aria-label="Spider-Man Remastered">
+        <div class="relative h-56 md:h-64 bg-cover bg-center gpu" style="background-image:url('c_4.jpg')"></div>
+        <div class="p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="font-bold text-lg">Spider-Man Remastered</h3>
+              <div class="text-xs text-white/60">Action / Adventure</div>
+            </div>
+            <div class="self-start">
+              <div class="price-pill game-price" data-game="spidey">₦—</div>
+            </div>
+          </div>
+          <p class="text-sm text-white/60 mt-3 line-clamp-2">Swing through NY with PC features — raytracing, DLSS/FSR, ultrawide.</p>
+        </div>
+      </article>
+
+      <article class="relative rounded-2xl overflow-hidden lift glass cursor-pointer" data-game="cyberpunk" tabindex="0" aria-label="Cyberpunk 2077">
+        <div class="relative h-56 md:h-64 bg-cover bg-center gpu" style="background-image:url('c_5.png')"></div>
+        <div class="p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="font-bold text-lg">Cyberpunk 2077</h3>
+              <div class="text-xs text-white/60">RPG / Sci-Fi</div>
+            </div>
+            <div class="self-start">
+              <div class="price-pill game-price" data-game="cyberpunk">₦—</div>
+            </div>
+          </div>
+          <p class="text-sm text-white/60 mt-3 line-clamp-2">Night City, deep RPG systems, and lots of post-launch enhancements.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="gameModal" class="fixed inset-0 z-60 hidden">
+    <div id="modalBackdrop" class="absolute inset-0 bg-black/70"></div>
+    <div class="modal-panel relative mx-auto mt-[6vh] rounded-2xl glass border border-white/6 max-w-3xl w-[92%] overflow-hidden">
+      <div class="flex items-start justify-between p-4 border-b border-white/6">
+        <div>
+          <h3 id="modalTitle" class="text-xl font-bold">Title</h3>
+          <div id="modalGenre" class="text-sm text-white/60">Genre</div>
+        </div>
+        <button id="modalClose" class="text-white/70 text-2xl leading-none">&times;</button>
+      </div>
+
+      <div class="p-4 space-y-4 max-h-[72vh] overflow-y-auto">
+        <div class="aspect-video w-full rounded-md overflow-hidden bg-black">
+          <iframe id="modalVideo" class="w-full h-full" src="" title="Gameplay" allowfullscreen loading="lazy"></iframe>
+        </div>
+
+        <p id="modalDesc" class="text-white/80"></p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-3 bg-white/5 rounded-md">
+            <h4 class="font-semibold">Minimum Specs</h4>
+            <ul id="specsMin" class="text-sm text-white/70 mt-2 space-y-1"></ul>
+          </div>
+          <div class="p-3 bg-white/5 rounded-md">
+            <h4 class="font-semibold">Recommended Specs</h4>
+            <ul id="specsRec" class="text-sm text-white/70 mt-2 space-y-1"></ul>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between gap-3 bg-gradient-to-r from-[rgba(255,102,178,0.06)] to-[rgba(255,102,178,0.03)] p-3 rounded-md">
+          <div>
+            <div class="text-sm text-white/60">Download (licensing service)</div>
+            <div id="priceEl" class="text-2xl font-extrabold text-pink-400">₦—</div>
+          </div>
+          <div class="flex gap-3">
+            <a id="buyNow" target="_blank" class="px-4 py-2 rounded-md bg-pink-500 hover:bg-pink-600 font-semibold">Buy on WhatsApp</a>
+            <a id="addCart" target="_blank" class="px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 font-semibold">Add to Cart (WA)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* ------------------------
+  Games dataset (keeps same keys used on page)
+  ------------------------ */
+const games = {
+  gta5: { name:"GTA V", genre:"Open World", video:"https://www.youtube.com/embed/4E8bbo3bOtU?rel=0", desc:"Switch between three protagonists and take over Los Santos.", min:["Intel i7-4770 / Ryzen 5 1400","12 GB RAM","GTX 1050 Ti / RX 570","90 GB"], rec:["i7-6700K / Ryzen 5 2600","16 GB RAM","GTX 1660 / RX 590","90 GB SSD"] },
+  fifa23: { name:"FIFA 23", genre:"Sports Simulation", video:"https://www.youtube.com/embed/o3V-GvvzjE4?rel=0", desc:"HyperMotion2 and realistic football gameplay.", min:["i5-6600K / Ryzen 5 1600","8 GB RAM","GTX 1050 Ti / RX 570","100 GB"], rec:["i7-6700 / Ryzen 7 2700X","12 GB RAM","GTX 1660 / RX 5600 XT","100 GB"] },
+  arkham: { name:"Batman: Arkham Knight", genre:"Action / Adventure", video:"https://www.youtube.com/embed/wsf78BS9VE0?rel=0", desc:"Play as Batman in the finale from Rocksteady.", min:["i5-750 / Phenom II X4 965","6 GB RAM","GTX 660 / HD 7870","45 GB"], rec:["i7-3770 / FX-8350","8 GB RAM","GTX 760 / R9 280","55 GB"] },
+  spidey: { name:"Spider-Man Remastered", genre:"Action / Adventure", video:"https://www.youtube.com/embed/Yw7oS6v1ZNY?rel=0", desc:"Swing through NYC with ray-tracing and PC features.", min:["i3-4160 / AMD eqv","8 GB RAM","GTX 950 / RX 470","75 GB"], rec:["i5-4670 / Ryzen 5 1600","16 GB RAM","GTX 1060 6GB / RX 580 8GB","75 GB SSD"] },
+  cyberpunk: { name:"Cyberpunk 2077", genre:"RPG / Sci-Fi", video:"https://www.youtube.com/embed/qIcTM8WXFjk?rel=0", desc:"Huge open world, deep RPG systems and post-launch improvements.", min:["i7-6700 / Ryzen 5 1600","12 GB RAM","GTX 1060 6GB / RX 580 8GB","70 GB SSD"], rec:["i7-12700 / Ryzen 7 7800X3D","16 GB RAM","RTX 2060 SUPER / RX 5700 XT","70 GB SSD"] }
+};
+
+/* ------------------------
+  Weighted price distribution + session persistence
+  - majority 5000; some 4500, 4000, 3500
+  ------------------------ */
+const SESSION_KEY = "by_weighted_prices_v2";
+let priceMap = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "{}");
+
+function createWeightedPicker() {
+  // Bias: majority 5000, rest 4500 -> minimum 4500
+  return [5000,5000,5000,5000,5000,5000,4500];
+}
+
+const pool = createWeightedPicker();
+
+function pickFromPool(){ return pool[Math.floor(Math.random()*pool.length)]; }
+
+function ensurePricesAssigned() {
+  for (const key of Object.keys(games)) {
+    if (!priceMap[key]) priceMap[key] = pickFromPool();
+  }
+  sessionStorage.setItem(SESSION_KEY, JSON.stringify(priceMap));
+}
+
+/* format NGN */
+const fmtNGN = v => new Intl.NumberFormat("en-NG",{style:"currency",currency:"NGN",maximumFractionDigits:0}).format(v);
+
+/* fill price badges on homepage */
+function fillHomepagePrices(){
+  document.querySelectorAll(".game-price").forEach(el=>{
+    const key = el.dataset.game;
+    const p = priceMap[key] ?? pickFromPool();
+    el.textContent = fmtNGN(p);
+  });
+
+  // small summary
+  const summary = document.getElementById("priceSummary");
+  if(summary){
+    summary.innerHTML = "";
+    Object.keys(games).forEach(k=>{
+      const row = document.createElement("div");
+      row.className = "text-xs text-white/80 flex items-center justify-between gap-2";
+      row.innerHTML = `<div class="truncate">${games[k].name}</div><div class="font-semibold text-sm">${fmtNGN(priceMap[k])}</div>`;
+      summary.appendChild(row);
+    });
+  }
+}
+
+/* modal wiring (uses same priceMap) */
+const modal = document.getElementById("gameModal");
+const modalBackdrop = document.getElementById("modalBackdrop");
+const modalClose = document.getElementById("modalClose");
+const modalTitle = document.getElementById("modalTitle");
+const modalGenre = document.getElementById("modalGenre");
+const modalVideo = document.getElementById("modalVideo");
+const modalDesc = document.getElementById("modalDesc");
+const specsMin = document.getElementById("specsMin");
+const specsRec = document.getElementById("specsRec");
+const priceEl = document.getElementById("priceEl");
+const buyNow = document.getElementById("buyNow");
+const addCart = document.getElementById("addCart");
+
+const WA_NUMBER = "2348130489824";
+const waLink = (gameName, price, action="buy") => {
+  const msg = `Hello! I'd like to ${action} "${gameName}" for ${fmtNGN(price)}.`;
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+};
+
+function openModal(key){
+  const g = games[key];
+  if(!g) return;
+  const price = priceMap[key] ?? pickFromPool();
+  modalTitle.textContent = g.name;
+  modalGenre.textContent = g.genre;
+  modalVideo.src = g.video;
+  modalDesc.textContent = g.desc;
+  specsMin.innerHTML = g.min.map(i=>`<li>${i}</li>`).join("");
+  specsRec.innerHTML = g.rec.map(i=>`<li>${i}</li>`).join("");
+  priceEl.textContent = fmtNGN(price);
+  buyNow.href = waLink(g.name, price, "buy");
+  addCart.href = waLink(g.name, price, "add to cart");
+
+  modal.classList.remove("hidden");
+  document.body.classList.add("modal-open");
+}
+
+function closeModal(){
+  modal.classList.add("hidden");
+  modalVideo.src = ""; // stop
+  document.body.classList.remove("modal-open");
+}
+
+/* ensure prices and populate UI on DOM ready */
+document.addEventListener("DOMContentLoaded", ()=>{
+  ensurePricesAssigned();
+  fillHomepagePrices();
+
+  // click handlers to open modal
+  document.addEventListener("click", (e)=>{
+    const btn = e.target.closest("[data-game]");
+    if(!btn) return;
+    const key = btn.getAttribute("data-game");
+    openModal(key);
+  });
+
+  modalBackdrop.addEventListener("click", closeModal);
+  modalClose.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closeModal(); });
+
+  // Shuffle button: reassign new prices for session (useful for demo)
+  document.getElementById("shufflePrices").addEventListener("click", ()=>{
+    priceMap = {};
+    ensurePricesAssigned();
+    fillHomepagePrices();
+  });
+
+  // open all (demo open each modal fast) - small helper for testing
+  document.getElementById("openAll").addEventListener("click", ()=>{
+    // open first one to demo
+    openModal(Object.keys(games)[0]);
+  });
+
+  // keyboard Enter on cards
+  document.querySelectorAll("[data-game]").forEach(el=>{
+    el.addEventListener("keydown", (e) => { if(e.key === "Enter") el.click(); });
+  });
+});
+</script>
+
+</body>
+</html>
